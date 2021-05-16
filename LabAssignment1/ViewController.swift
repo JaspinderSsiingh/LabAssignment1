@@ -233,6 +233,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 }
 
+// Map View Delegate
 extension ViewController: MKMapViewDelegate {
     // This Function is needed to add overlays
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
