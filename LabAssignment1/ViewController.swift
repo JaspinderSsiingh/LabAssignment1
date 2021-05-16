@@ -47,7 +47,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager.startUpdatingLocation()
         
-        // add long press gesture
+        // Add long press gesture
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapPress))
         tapGesture.numberOfTouchesRequired = 1
         mapView.addGestureRecognizer(tapGesture)
@@ -123,7 +123,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
+    // Reset Map View
     func reSetupMapView(_ coordinate: CLLocationCoordinate2D, _ counter: Int) {
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
@@ -165,6 +165,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Distance between the Paths
     func distanceBetweenTwoPath(_ first: CLLocationCoordinate2D, _ second: CLLocationCoordinate2D) -> String {
         var distanceInMeters = CLLocationDistance()
         if coordinates.count > 0 {
@@ -182,7 +183,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         makeRoute()
     }
     
-    
+    // Make Route
     func makeRoute() {
         mapView.removeOverlays(mapView.overlays)
         if mapView.overlays.count == 0 {
@@ -216,6 +217,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Zoom in out function
     @IBAction func zoomInOut(_ sender: UIStepper) {
         if sender.value > oldValue {
             oldValue += 1
@@ -236,26 +238,27 @@ extension ViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
             let rendrer = MKPolylineRenderer(overlay: overlay)
-            rendrer.strokeColor = UIColor.red
+            rendrer.strokeColor = UIColor.blue
             rendrer.lineWidth = 5
             return rendrer
         } else if overlay is MKPolygon {
             let rendrer = MKPolygonRenderer(overlay: overlay)
-            rendrer.fillColor = UIColor.red.withAlphaComponent(0.5)
+            rendrer.fillColor = UIColor.red.withAlphaComponent(0.50)
             rendrer.strokeColor = UIColor.green
-            rendrer.lineWidth = 5
+            rendrer.lineWidth = 4
             return rendrer
         } else {
             let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-            renderer.strokeColor = UIColor.red.withAlphaComponent(0.65)
+            renderer.strokeColor = UIColor.red.withAlphaComponent(0.50)
             if self.request.transportType == .walking {
                 renderer.lineDashPattern = [0, 10]
             }
             return renderer
         }
-        return MKOverlayRenderer()
+        //return MKOverlayRenderer()
     }
     
+    // Initialize Map and remove annotations
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         coordinates.removeAll { (loc) -> Bool in
