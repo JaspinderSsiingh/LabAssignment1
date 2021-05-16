@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LabAssignment1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vGI-mj-7SL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vl1-wg-8AF">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="C7e-th-U6N"/>
+                                </connections>
+                            </mapView>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="e3T-Vb-b3F">
+                                <rect key="frame" x="20" y="810" width="94" height="32"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <connections>
+                                    <action selector="zoomInOut:" destination="BYZ-38-t0r" eventType="valueChanged" id="i0n-OK-nQR"/>
+                                </connections>
+                            </stepper>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4L-gR-s0b">
+                                <rect key="frame" x="354" y="802" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PeL-vz-fzr"/>
+                                    <constraint firstAttribute="width" constant="40" id="gD7-OX-8GR"/>
+                                </constraints>
+                                <state key="normal" image="locationButton"/>
+                                <connections>
+                                    <action selector="getRouteButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fp5-qY-0qL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="avO-me-o0f"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Vl1-wg-8AF" firstAttribute="top" secondItem="avO-me-o0f" secondAttribute="top" id="7cp-gB-1WN"/>
+                            <constraint firstItem="avO-me-o0f" firstAttribute="bottom" secondItem="Vl1-wg-8AF" secondAttribute="bottom" id="K3T-tk-ynT"/>
+                            <constraint firstItem="avO-me-o0f" firstAttribute="bottom" secondItem="W4L-gR-s0b" secondAttribute="bottom" constant="20" id="M4l-bK-tO6"/>
+                            <constraint firstItem="avO-me-o0f" firstAttribute="trailing" secondItem="Vl1-wg-8AF" secondAttribute="trailing" id="Nbx-8A-ODu"/>
+                            <constraint firstItem="e3T-Vb-b3F" firstAttribute="leading" secondItem="avO-me-o0f" secondAttribute="leading" constant="20" id="POc-Wg-ah0"/>
+                            <constraint firstItem="avO-me-o0f" firstAttribute="trailing" secondItem="W4L-gR-s0b" secondAttribute="trailing" constant="20" id="WlY-Bc-Rsv"/>
+                            <constraint firstItem="Vl1-wg-8AF" firstAttribute="leading" secondItem="avO-me-o0f" secondAttribute="leading" id="jUt-lQ-dHp"/>
+                            <constraint firstItem="avO-me-o0f" firstAttribute="bottom" secondItem="e3T-Vb-b3F" secondAttribute="bottom" constant="20" id="nc4-Q3-jul"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Vl1-wg-8AF" id="Dp2-O7-A81"/>
+                        <outlet property="stepper" destination="e3T-Vb-b3F" id="XVa-mr-ZC2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="79.6875"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="locationButton" width="67" height="67"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
